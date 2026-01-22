@@ -15,12 +15,17 @@ function rendertoDoList() {
     
     <div class="task__name">${name}</div>
     <div class="task__date">${date}</div>
-         <button class="delete__btn" onclick="
-      removeItem(${i});
-      
-      ">Delete</button>
+         <button class="delete__btn">Delete</button>
     `;
+
+    document.querySelectorAll('.delete__btn')
+  .forEach((deleteButton, index)=>{
+    deleteButton.addEventListener('click', () =>{
+        removeItem(index, 1);
+    })});
+
   }
+
 }
 
 function send(event) {
@@ -28,6 +33,11 @@ function send(event) {
     addItem();
   }
 }
+
+document.querySelector('.addItem')
+.addEventListener('click', ()=> {
+   addItem(); 
+});
 
 function addItem() {
   const inputElement = document.querySelector(".userItem");
